@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>疫情预测与舆情分析</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="%e7%96%ab%e6%83%85%e9%a2%84%e6%b5%8b%e4%b8%8e%e8%88%86%e6%83%85%e5%88%86%e6%9e%90">疫情预测与舆情分析</h1>
+<p>地理空间数据库课程作业：空间分析</p>
+<h2 id="%e7%a9%ba%e9%97%b4%e6%95%b0%e6%8d%ae%e5%88%86%e6%9e%90-%e4%bd%9c%e4%b8%9a%e8%a6%81%e6%b1%82">空间数据分析 作业要求</h2>
+<h3 id="%e4%bd%9c%e4%b8%9a%e7%9b%ae%e7%9a%84">作业目的：</h3>
+<p>了解空间数据在日常生活中的应用，熟悉空间数据统计分析、空间数据挖掘、空间数据可视化等技术。</p>
+<h3 id="%e4%bd%9c%e4%b8%9a%e5%86%85%e5%ae%b9">作业内容：</h3>
+<p>新型冠状病毒肺炎（COVID-19，简称“新冠肺炎”）疫情肆虐全球多个国家，2020年3月11日，世界卫生组织 (WHO) 正式宣布将新冠肺炎列为全球性大流行病。在全球抗击新型冠状病毒疫情的过程中，产生了前所未有的大规模疫情数据，利用大数据分析技术和方法能够协助发现病毒传染源、监测疫情发展、调配救援物资，从而更好地进行疫情防控工作。空间数据分析作为大数据分析的重要组成，将数据智能处理、直观展示和交互分析有机地结合，使机器智能和人类智慧深度融合、优势互补，为疫情防控中的分析、指挥和决策提供有效依据和指南。</p>
+<p>作业要求以新冠疫情或其它重大公共卫生事件的相关时空数据为基础，利用数据清洗与管理、统计分析、数据挖掘、数据可视化等相关技术和方法，探索并发现疫情大数据背后隐藏的模式和规律。请选择一个具体的研究题目，进行深入分析。</p>
+<h3 id="%e9%80%89%e9%a2%98%e7%96%ab%e6%83%85%e9%a2%84%e6%b5%8b%e4%b8%8e%e8%88%86%e6%83%85%e7%9b%91%e6%b5%8b">选题：疫情预测与舆情监测：</h3>
+<p>利用空间数据分析技术，预测疫情发展趋势与关键节点、分析社交媒体话题与情感的动态演变、对社会舆情进行态势感知。</p>
+<h3 id="%e4%bd%9c%e4%b8%9a%e6%ad%a5%e9%aa%a4">作业步骤：</h3>
+<ol>
+<li>选择研究问题，寻找相关时空数据</li>
+<li>通过统计分析和数据挖掘，对数据进行处理和简化，如删除异常数据</li>
+<li>通过可视化交互分析数据，发现其中的规律、模式和异常</li>
+<li>撰写研究报告</li>
+</ol>
+<h3 id="%e6%97%b6%e9%97%b4%e5%ae%89%e6%8e%92">时间安排：</h3>
+<ol>
+<li>2020.5.19前完成组队和研究问题选择，每组最多2人，将所选择的研究题目和队员填写在学在浙大系统的答题框内提交（第一次提交），每位同学都需要提交。</li>
+<li>2019.6.2前上交研究报告及相关代码，如Notebook，包括研究问题、数据、分析方法和过程、分析结论等内容，在学在浙大系统提交文档（第二次提交，word或pdf，无需压缩，支持系统直接查看），每位同学都需要提交。</li>
+<li>2020.6.2和2020.6.9课堂报告，每组15分钟报告+5分钟提问，提问的同学有加分，每个问题1分。报告内容包括研究问题介绍、数据和分析方法、分析结论等，课堂报告后将报告PPT提交到学在浙大（第三次提交），截止日期2020.6.9，每位同学都需要提交。</li>
+</ol>
+<h3 id="%e8%80%83%e6%a0%b8%e6%a0%87%e5%87%86">考核标准：</h3>
+<ol>
+<li>作业总分40分，文档和课堂报告各20分。</li>
+<li>评价标准：
+<ul>
+<li>问题质量（研究问题是否有研究意义和实际价值）</li>
+<li>分析质量（分析过程是否合理，分析方法选择是否恰当，是否准确解决所- 提出的问题，鼓励找到合理的新发现）</li>
+<li>文档质量（文档描述是否清晰、分析结论总结是否到位）</li>
+</ul>
+</li>
+</ol>
+<h2 id="%e6%96%87%e6%a1%a3%e4%b8%8e%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84">文档与目录结构</h2>
+<ul>
+<li>dataSets
+<ul>
+<li>
+<p>china_provincedata.csv 中国各省、直辖市、自治区、特别行政区的疫情数据</p>
+</li>
+<li>
+<p>countrydata.csv 全球214个国家地区以及钻石公主号邮轮的疫情数据</p>
+</li>
+<li>
+<p>nCoV_900k_train.unlabled.csv</p>
+<blockquote>
+<p>数据集依据与“新冠肺炎”相关的230个主题关键词进行数据采集，抓取了2020年1月1日—2020年2月20日期间共计100万条微博数据，并对其中10万条数据进行人工标注，标注分为三类，分别为：1（积极），0（中性）和-1（消极）。</p>
+</blockquote>
+</li>
+<li>
+<p>nCoV_100k_train.labled.csv 同上，有标注</p>
+<blockquote>
+<p>数据集太大了就先不上传了</p>
+</blockquote>
+</li>
+<li>
+<p>nCov_10k_test.csv 同上</p>
+</li>
+<li>
+<p>yqkx_data-5_21.csv 使用爬虫获取的人民网疫情快讯新闻100篇</p>
+</li>
+<li>
+<p>中国社会组织_疫情防控-5_21.csv 中国社会组织公共服务平台疫情防控专区新闻</p>
+</li>
+<li>
+<p>weiboComments-5_21.csv 5.21微博《战疫情》主题下的微博和评论数据</p>
+</li>
+</ul>
+</li>
+<li>images 分析生成的相关图片</li>
+<li>scripts python脚本（爬虫、可视化、数据处理等等）
+<ul>
+<li><a href="http://spider-yqkx.py">spider-yqkx.py</a> 人民网爬虫</li>
+<li><a href="http://xn--spider--so5k4542abtl7a.py">spider-社会组织.py</a> 中国社会组织公共服务平台爬虫</li>
+<li>weibo_战疫情爬虫_spider.py  微博《战疫情》爬虫</li>
+<li><a href="http://pyecharts-zhexian-country.py">pyecharts-zhexian-country.py</a> 使用pyecharts绘制任一国家疫情数据曲线图</li>
+</ul>
+</li>
+</ul>
+<h2 id="%e4%bd%9c%e4%b8%9a%e9%83%a8%e5%88%86%e7%9b%b8%e5%85%b3%e6%8a%80%e6%9c%af%e6%a0%88">作业部分相关技术栈</h2>
+<ul>
+<li>数据库的构建与sql语句查询</li>
+<li>pyEchart可视化</li>
+<li>snownlp</li>
+<li>jieba</li>
+</ul>
+<h2 id=""></h2>
+
+    </body>
+    </html>
