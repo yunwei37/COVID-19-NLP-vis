@@ -2,7 +2,7 @@
 
 地理空间数据库课程作业：空间分析
 
-## 空间数据分析 作业详情
+## 空间数据分析 作业要求
 
 ### 作业目的：
 
@@ -47,16 +47,27 @@
   - countrydata.csv 全球214个国家地区以及钻石公主号邮轮的疫情数据 
   - nCoV_900k_train.unlabled.csv 
     >数据集依据与“新冠肺炎”相关的230个主题关键词进行数据采集，抓取了2020年1月1日—2020年2月20日期间共计100万条微博数据，并对其中10万条数据进行人工标注，标注分为三类，分别为：1（积极），0（中性）和-1（消极）。
+
   - nCoV_100k_train.labled.csv 同上，有标注
+    >数据集太大了就先不上传了
+
   - nCov_10k_test.csv 同上
-  - yqkx_data-5_21.csv 人民网疫情快讯新闻100篇
+  - yqkx_data-5_21.csv 使用爬虫获取的人民网疫情快讯新闻100篇
   - 中国社会组织_疫情防控-5_21.csv 中国社会组织公共服务平台疫情防控专区新闻
   - weiboComments-5_21.csv 5.21微博《战疫情》主题下的微博和评论数据
 - images 分析生成的相关图片
-- scripts python脚本
+- scripts python脚本（爬虫、可视化、数据处理等等）
   - spider-yqkx.py 人民网爬虫
   - spider-社会组织.py 中国社会组织公共服务平台爬虫
   - weibo_战疫情爬虫_spider.py  微博《战疫情》爬虫
+  - pyecharts-zhexian-country.py 使用pyecharts绘制任一国家疫情数据曲线图
 
 
-未完待续
+## 作业部分相关技术栈
+
+- 数据库的构建与sql语句查询
+- pyEchart可视化
+- snownlp
+- jieba
+
+## 
