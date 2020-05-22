@@ -22,11 +22,12 @@ def render_lines(country_name):
     current_list = list(data['currentConfirmedCount'])
     dead_list = list(data['deadCount'])
     heal_list = list(data['curedCount'])
-    print(date_list)                        # 日期
-    print(confirm_list)                     # 确诊数据
-    print(current_list)                     # 疑似数据
-    print(dead_list)                        # 死亡数据
-    print(heal_list)                        # 治愈数据
+    print(len(date_list))    
+    #print(date_list)                        # 日期
+    #print(confirm_list)                     # 确诊数据
+    #print(current_list)                     # 疑似数据
+    #print(dead_list)                        # 死亡数据
+    #print(heal_list)                        # 治愈数据
 
 
     #-------------------------------------------------------------------------------------

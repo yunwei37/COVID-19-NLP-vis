@@ -11,7 +11,7 @@ def render_mapcountChina(dateId):
     n = "dataSets\\china_provincedata.csv"
     data = pd.read_csv(n)
     data = data[data['dateId'] == dateId]
-    print(data['currentConfirmedCount'])
+    #print(data['currentConfirmedCount'])
     list_data = zip(list(data['provinceShortName']), list(data['currentConfirmedCount']))
     # [('湖北', 48206), ('广东', 1241), ('河南', 1169), ('浙江', 1145), ..., ('澳门', 10), ('西藏', 1)]
 

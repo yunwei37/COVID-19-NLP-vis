@@ -5,6 +5,21 @@ var worldmap = echarts.init(document.getElementById('worldMap'), 'white', {rende
 var chinamap = echarts.init(document.getElementById('chinaMap'), 'white', {renderer: 'canvas'});
 var lineChart = echarts.init(document.getElementById('lines'), 'white', {renderer: 'canvas'});
 
+var slider = document.getElementById('slider');
+
+document.getElementById('slider').onchange =  function changeDate(e){
+    $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:5000/changedate",
+        dataType: "json",
+        data:  "value="+document.getElementById('slider').value,
+        success: function (result) {
+            worldmap.setOption(result);
+        }
+    });
+    fetchchinaMapData(chinamap);
+}
+
 $(
     function () {
         fetchworldMapData(worldmap);
@@ -45,3 +60,5 @@ function fetchworldMapData(chart) {
         }
     });
 }
+
+

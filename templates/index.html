@@ -10,9 +10,14 @@
 </head>
 <body style="margin-left: auto;margin-right: auto;	width: 1000px;">
     <h1 style="text-align: center;">疫情数据展示</h1>
-    <input id="date" type="date" style="text-align: center;">
+
+    <label>拖动滑块即可切换日期</label>
+    <input id='slider' style="width: 400px;" type='range' min='0' max='121' step='1'/>
+
+
     <div id="worldMap" class="maps" style="width:1000px; height:600px;"></div>
     <div id="chinaMap" class="maps" style="width:1000px; height:600px;"></div>
+
     <div id="lines" style="width:1000px; height:600px;"></div>
     <script type="text/javascript" src="{{ url_for('static',filename='render.js') }}"></script>
 </body>

@@ -12,7 +12,7 @@ def render_mapcountWorld(dateId):
     # 从foreigns中选取 country和confirm 两列
     world_data = world_data[['countryFullName', 'currentConfirmedCount']]
 
-    print(world_data)
+    #print(world_data)
 
 
     world_map = (
