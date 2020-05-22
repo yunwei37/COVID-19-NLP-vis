@@ -6,6 +6,9 @@ from flask import Flask, render_template
 from pyecharts import options as opts
 from pyecharts.charts import Line
 
+from scripts.mapchina import render_mapcountChina
+from scripts.mapworld import render_mapcountWorld
+
 
 app = Flask(__name__, static_folder="templates")
 
@@ -33,12 +36,22 @@ def line_base() -> Line:
 def index():
     return render_template("index.html")
 
+@app.route("/document")
+def document():
+    return render_template("README.html")
 
 @app.route("/lineChart")
 def get_line_chart():
     c = line_base()
     return c.dump_options_with_quotes()
 
+@app.route("/worldmap")
+def get_world_map():
+    return render_mapcountChina(20200212).dump_options_with_quotes()
+
+@app.route("/chinamap")
+def get_china_map():
+    return render_mapcountWorld(20200301).dump_options_with_quotes()
 
 idx = 9
 
