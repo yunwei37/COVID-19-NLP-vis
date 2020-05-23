@@ -7,7 +7,7 @@ var lineChart = echarts.init(document.getElementById('lines'), 'white', {rendere
 
 var slider = document.getElementById('slider');
 
-document.getElementById('slider').onchange =  function changeDate(e){
+document.getElementById('slider').onchange =  function changeDate(){
     $.ajax({
         type: "GET",
         url: "http://127.0.0.1:5000/changedate",
@@ -18,6 +18,18 @@ document.getElementById('slider').onchange =  function changeDate(e){
         }
     });
     fetchchinaMapData(chinamap);
+}
+
+document.getElementById('selectCountrys').onchange = function changeCountry(){
+    $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:5000/changecountry",
+        dataType: "json",
+        data:  "value="+document.getElementById('selectCountrys').value,
+        success: function (result) {
+            lineChart.setOption(result);
+        }
+    });
 }
 
 $(

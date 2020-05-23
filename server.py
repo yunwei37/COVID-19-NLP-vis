@@ -17,14 +17,19 @@ i = 45
 
 n = "dataSets\\countrydata.csv"
 data = pd.read_csv(n)
-data = data[data['countryName'] == '中国']
-date_list = list(data['dateId'])
+date_list = list(data[data['countryName'] == '中国']['dateId'])
+countrylist = list(data[data['dateId'] == 20200412]['countryName'])
+countrylist = ['中国']+countrylist
+#print(date_list)
+#print(countrylist)
+
+selectCountry = '中国'
 
 app = Flask(__name__, static_folder="templates")
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html",cates = countrylist)
 
 @app.route("/document")
 def document():
@@ -42,7 +47,15 @@ def get_china_map():
 
 @app.route("/lines")
 def get_line_chart():
-    return render_lines('中国').dump_options_with_quotes()
+    return render_lines(selectCountry).dump_options_with_quotes()
+
+@app.route('/changecountry',methods=['POST', 'GET'])
+def changeCountry():
+    if request.method == 'GET':
+        global selectCountry
+        selectCountry = request.args.get('value', '')
+        print(selectCountry)
+        return render_lines(selectCountry).dump_options_with_quotes()
 
 @app.route('/changedate',methods=['POST', 'GET'])
 def changeDate():

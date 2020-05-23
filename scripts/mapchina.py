@@ -22,7 +22,7 @@ def render_mapcountChina(dateId):
     #-------------------------------------------------------------------------------------
     c = (
         Map()
-        .add('中国', list_data, 'china')
+        .add('', list_data, 'china')
         .set_global_opts(
             title_opts=opts.TitleOpts(title='全国疫情分布图（现存）'+str(dateId)),
             visualmap_opts=opts.VisualMapOpts(is_show=True,
