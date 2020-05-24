@@ -12,6 +12,7 @@ from pyecharts.charts import Line
 from scripts.mapchina import render_mapcountChina
 from scripts.mapworld import render_mapcountWorld
 from scripts.lineCountry import render_lines
+from scripts.jiebafenci import render_wordcloud
 
 i = 45
 
@@ -25,11 +26,13 @@ countrylist = ['中国']+countrylist
 
 selectCountry = '中国'
 
+wordCloudTimelist = list(range(10))
+
 app = Flask(__name__, static_folder="templates")
 
 @app.route("/")
 def index():
-    return render_template("index.html",cates = countrylist)
+    return render_template("index.html",cates = countrylist,wordtimes = wordCloudTimelist)
 
 @app.route("/document")
 def document():
@@ -48,6 +51,15 @@ def get_china_map():
 @app.route("/lines")
 def get_line_chart():
     return render_lines(selectCountry).dump_options_with_quotes()
+
+@app.route("/wordcloud",methods=['POST', 'GET'])
+def get_word_chart():
+    if request.method == 'GET':
+        i = request.args.get('value', '')
+        if not i:
+            i = 0
+        print(i)
+        return render_wordcloud(i).dump_options_with_quotes()
 
 @app.route('/changecountry',methods=['POST', 'GET'])
 def changeCountry():

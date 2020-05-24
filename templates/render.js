@@ -4,6 +4,7 @@
 var worldmap = echarts.init(document.getElementById('worldMap'), 'white', {renderer: 'canvas'});
 var chinamap = echarts.init(document.getElementById('chinaMap'), 'white', {renderer: 'canvas'});
 var lineChart = echarts.init(document.getElementById('lines'), 'white', {renderer: 'canvas'});
+var wordchart = echarts.init(document.getElementById('wordcloud'), 'white', {renderer: 'canvas'});
 
 var slider = document.getElementById('slider');
 
@@ -32,11 +33,31 @@ document.getElementById('selectCountrys').onchange = function changeCountry(){
     });
 }
 
+document.getElementById('sliderWord').onchange = function changeWordCloud(){
+    $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:5000/wordcloud",
+        dataType: "json",
+        data:  "value="+document.getElementById('sliderWord').value,
+        success: function (result) {
+            wordchart.setOption(result);
+        }
+    });
+}
+
 $(
     function () {
         fetchworldMapData(worldmap);
         fetchchinaMapData(chinamap);
         fetchlineData(lineChart)
+        $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:5000/wordcloud",
+            dataType: "json",
+            success: function (result) {
+                wordchart.setOption(result);
+            }
+        });
     }
 );
 

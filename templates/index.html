@@ -6,11 +6,15 @@
     <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
     <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/world.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts-wordcloud.min.js"></script>
     <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
 </head>
 <body style="margin-left: auto;margin-right: auto;max-width: 1100px;">
+    <div id="links">
+        <a href="/">数据分析与可视化</a>
+        <a href="/document">技术文档</a>
+    </div>
     <h1 style="text-align: center;">疫情数据展示</h1>
-
 
     <div id="maps">
         <div>
@@ -22,14 +26,27 @@
     </div>
 
     <div>
-        <label>请选择国家：</label>
+        <label>请选择国家：    </label>
         <select id="selectCountrys">
         {% for cate in cates %}
             <option value="{{cate}}" >{{cate}}</option>
         {% endfor %}
-    </select>
+        </select>
+        <div id="lines" style="width:1000px; height:600px;"></div>
     </div>
-    <div id="lines" style="width:1000px; height:600px;"></div>
+
+    <select id="selectwordcloudtimes">
+        {% for wordtime in wordtimes %}
+            <option value="{{wordtime}}" >{{wordtime}}</option>
+        {% endfor %}
+    </select>
+
+
+    <div>
+        <label>拖动滑块即可切换日期:</label>
+        <input id='sliderWord' style="width: 400px;vertical-align: middle;" type='range' min='0' max='90' step='1'/>
+    </div>
+    <div id="wordcloud" style="width:1000px; height:600px;"></div>
 
 
     <script type="text/javascript" src="{{ url_for('static',filename='render.js') }}"></script>

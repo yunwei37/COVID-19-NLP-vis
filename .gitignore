@@ -1,5 +1,6 @@
 dataSets/nCov_10k_test.csv
 dataSets/nCoV_900k_train.unlabled.csv
 dataSets/nCoV_100k_train.labled.csv
+dataSets/nCoV_total.csv
 .ipynb_checkpoints
 scripts/__pycache__
