@@ -16,9 +16,9 @@ document.getElementById('slider').onchange =  function changeDate(){
         data:  "value="+document.getElementById('slider').value,
         success: function (result) {
             worldmap.setOption(result);
+            fetchchinaMapData(chinamap);
         }
     });
-    fetchchinaMapData(chinamap);
 }
 
 document.getElementById('selectCountrys').onchange = function changeCountry(){
@@ -29,6 +29,19 @@ document.getElementById('selectCountrys').onchange = function changeCountry(){
         data:  "value="+document.getElementById('selectCountrys').value,
         success: function (result) {
             lineChart.setOption(result);
+        }
+    });
+}
+
+document.getElementById('mapselecter').onchange = function changeCountry(){
+    $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:5000/changemap",
+        dataType: "json",
+        data:  "value="+document.getElementById('mapselecter').value,
+        success: function (result) {
+            worldmap.setOption(result);
+            fetchchinaMapData(chinamap);
         }
     });
 }

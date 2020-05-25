@@ -14,7 +14,11 @@ from scripts.mapworld import render_mapcountWorld
 from scripts.lineCountry import render_lines
 from scripts.jiebafenci import render_wordcloud
 
+# map time index
 i = 45
+
+# map type 
+maptype = 0
 
 n = "dataSets\\countrydata.csv"
 data = pd.read_csv(n)
@@ -26,13 +30,11 @@ countrylist = ['中国']+countrylist
 
 selectCountry = '中国'
 
-wordCloudTimelist = list(range(10))
-
 app = Flask(__name__, static_folder="templates")
 
 @app.route("/")
 def index():
-    return render_template("index.html",cates = countrylist,wordtimes = wordCloudTimelist)
+    return render_template("index.html",cates = countrylist)
 
 @app.route("/document")
 def document():
@@ -41,12 +43,12 @@ def document():
 
 @app.route("/worldmap")
 def get_world_map():
-    return render_mapcountWorld(date_list[int(i)]).dump_options_with_quotes()
+    return render_mapcountWorld(date_list[int(i)],maptype).dump_options_with_quotes()
 
 
 @app.route("/chinamap")
 def get_china_map():
-    return render_mapcountChina(date_list[int(i)]).dump_options_with_quotes()
+    return render_mapcountChina(date_list[int(i)],maptype).dump_options_with_quotes()
 
 @app.route("/lines")
 def get_line_chart():
@@ -69,6 +71,14 @@ def changeCountry():
         print(selectCountry)
         return render_lines(selectCountry).dump_options_with_quotes()
 
+@app.route('/changemap',methods=['POST', 'GET'])
+def changeMapType():
+    if request.method == 'GET':
+        global maptype
+        maptype = int(request.args.get('value', ''))
+        print(maptype)
+        return render_mapcountWorld(date_list[int(i)],maptype).dump_options_with_quotes()
+
 @app.route('/changedate',methods=['POST', 'GET'])
 def changeDate():
     if request.method == 'GET':
@@ -76,7 +86,7 @@ def changeDate():
         i = request.args.get('value', '')
         print(i)
         print(date_list[int(i)])
-        return render_mapcountWorld(date_list[int(i)]).dump_options_with_quotes()
+        return render_mapcountWorld(date_list[int(i)],maptype).dump_options_with_quotes()
 
 if __name__ == "__main__":
     app.run()
