@@ -1,20 +1,31 @@
-<div id="links" >
-    <a href="/">数据分析与可视化</a>
-    <a href="/document">技术文档</a>
+<script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+<script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/world.js"></script>
+<script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts-wordcloud.min.js"></script>
+<script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
+
+<div id="links" style="line-height: 36px; background-color: rgb(84, 105, 104);">
+    <a href="/" style="display: inline-block; text-align: center" >数据分析与可视化</a>
+    <a href="/document" style="display: inline-block; text-align: center" >技术文档</a>
 </div>
+
 
 # 疫情空间数据与舆情数据分析可视化
 
->新型冠状病毒肺炎（COVID-19，简称“新冠肺炎”）疫情肆虐全球多个国家，2020年3月11日，世界卫生组织 (WHO) 正式宣布将新冠肺炎列为全球性大流行病。在全球抗击新型冠状病毒疫情的过程中，产生了前所未有的大规模疫情数据，利用大数据分析技术和方法能够协助发现病毒传染源、监测疫情发展、调配救援物资，从而更好地进行疫情防控工作。空间数据分析作为大数据分析的重要组成，将数据智能处理、直观展示和交互分析有机地结合，使机器智能和人类智慧深度融合、优势互补，为疫情防控中的分析、指挥和决策提供有效依据和指南。
+新型冠状病毒肺炎（COVID-19，简称“新冠肺炎”）疫情肆虐全球多个国家，2020年3月11日，世界卫生组织 (WHO) 正式宣布将新冠肺炎列为全球性大流行病。
 
->本项目希望能利用空间数据分析技术，预测疫情发展趋势与关键节点、分析社交媒体话题与情感的动态演变、对社会舆情进行态势感知。
+在全球抗击新型冠状病毒疫情的过程中，产生了前所未有的大规模疫情数据，利用大数据分析技术和方法能够协助发现病毒传染源、监测疫情发展、调配救援物资，从而更好地进行疫情防控工作。空间数据分析作为大数据分析的重要组成，将数据智能处理、直观展示和交互分析有机地结合，使机器智能和人类智慧深度融合、优势互补，为疫情防控中的分析、指挥和决策提供有效依据和指南。
+
+本项目希望能利用交互式空间数据分析技术，预测疫情发展趋势与关键节点、分析社交媒体话题与情感的动态演变、对社会舆情进行态势感知。
 
 ## 所使用的数据集：
 
 - 疫情统计时空数据，分为国内各省市疫情统计数据及世界各国疫情统计数据，包括从1.19至5.19四个月时间的确诊人数、现存确诊人数、治愈人数、死亡人数等
 - 中国社会组织公共服务平台疫情防控专区新闻1400+篇，包含时间、标题、正文内容、作者等
 - 依据与“新冠肺炎”相关的230个主题关键词进行数据采集的2020年1月1日—2020年2月20日期间共计100万条微博数据
-  
+
+部分数据经爬虫采集，部分数据采用公开数据集；
+
 ## Part 1：疫情空间数据数据可视化及趋势分析：
 
 ### 疫情数据动态交互可视化地图
@@ -23,7 +34,7 @@
 
 可以拖动时间轴上的滑块改变地图显示日期，范围为 1.19-5.19；
 
-<div id="current-maps">
+<div id="current-maps" >
     <div>
         <label>请选择地图类型:     </label>
         <select name="select-map" id="mapselecter">
@@ -36,11 +47,11 @@
         <label>拖动滑块即可切换日期:</label>
         <input id='slider' style="width: 400px;vertical-align: middle;" type='range' min='0' max='121' step='1'/>
     </div>
-    <div id="worldMap" class="maps" style="width:600px; height:500px;display: inline-block;"></div>
-    <div id="chinaMap" class="maps" style="width:600px; height:500px;display: inline-block;"></div>
+    <div id="worldMap" class="maps" style="width:500px; height:500px;display: inline-block;"></div>
+    <div id="chinaMap" class="maps" style="width:500px; height:500px;display: inline-block;"></div>
 </div>
 
-通过交互分析可以发现
+通过交互分析可以发现：
 
 - 现存确诊人数
   - 在1.20日左右，全国公布的疫情一开始出现在广东、湖北、北京上海等地，此时湖北的疫情确诊人数已经突破200；
@@ -52,11 +63,13 @@
   - 四月初，国内确诊人数继续减少，但有部分省份出现略微反扑；国外疫情几乎已经扩散到世界所有国家，其中美国确诊人数已经突破20万，是世界最严重的地区；
   - 从四月中旬开始，由于外来输入原因，国内黑龙江及东北地区出现了一次比较严重的疫情反扑，确诊人数接近500，但在五月初逐步得到控制；
   - 国外疫情在四五月份继续趋向严重，在5.8美国的确诊人数突破百万；但部分早期疫情严重的国家由于采取了有效的控制手段导致疫情缓解；
+  
 - 累计死亡人数
   - 二月初，世界各国开始出现死亡病例；
   - 国内的死亡病例数在二月中旬趋向平缓；
   - 在三月中旬，世界各国死亡病例陆续出现或开始明显增多；
   - 在五月份，报告的死亡数以美国、欧洲最为严重，许多国家死亡人数已经远远超过了中国；
+
 - 死亡率：
   - 死亡率也可以反应出疫情的控制程度，死亡率越低表明患者得到救治的概率越大；
   - 在医疗资源充足的地区，死亡率可以降低到1%左右；医疗资源不足的地区，死亡率可以高达10%；
@@ -75,6 +88,7 @@
 总体来看：
 - 中国在三月份就逐步控制住了疫情趋势，为世界抗疫事业做出了卓越的典范；
 - 欧洲和美洲等发达国家疫情数据较为严重，可能是发达国家在世界范围内流动的人口较大，但更可能是发达国家能得到有效的检测并报告病例；
+
 ### 世界疫情数据曲线图
 
 通过曲线图可直观地表现出确诊数据、死亡数据、治愈数据等的变化趋势，可以通过下拉框进行选择所显示的国家：
@@ -101,6 +115,34 @@
 - 由于检测技术或标准变化，可能出现确诊数据在短时间内的大量增多，也有的国家是每隔一段时间集中增加一次确诊数据；
 - 截止5.20，大多数国家的疫情还在上升趋势；
 
+### 疫情趋势预测分析
+
+
+
 ## part 2: 疫情舆情数据分析与可视化
 
+### 新闻数据分析与可视化
 
+#### 中国社会组织公共服务平台疫情防控专区新闻词云可视化(全部文章)：
+
+<div>
+    <div id="c61d88ede2df46799724e4ef261fa76f" class="chart-container" style="width:900px; height:500px;"></div>
+    <script type="text/javascript" src="{{ url_for('static',filename='wordcloud.js') }}"></script>
+</div>
+
+#### 部分新闻词云图：
+
+可通过拖动滑块改变日期范围，每个日期范围内有约100篇新闻；
+
+<div>
+    <div>
+        <label>拖动滑块即可切换日期:</label>
+        <input id='sliderWord' style="width: 400px;vertical-align: middle;" type='range' min='0' max='90' step='1'/>
+    </div>
+    <div id="wordcloud" style="width:1000px; height:600px;"></div>
+</div>
+
+### 微博舆情分析与数据可视化
+
+
+<script type="text/javascript" src="{{ url_for('static',filename='render.js') }}"></script>

@@ -9,16 +9,16 @@
     <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts-wordcloud.min.js"></script>
     <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
 </head>
-<body style="margin-left: auto;margin-right: auto;max-width: 1100px;">
+<body style="margin-left: auto;margin-right: auto;max-width: 1100px; background-color: cornsilk;">
 
-    <div id="links">
-        <a href="/">数据分析与可视化</a>
-        <a href="/document">技术文档</a>
+    <div id="links" style="line-height: 36px; background-color: rgb(84, 105, 104);">
+        <a href="/" style="display: inline-block; text-align: center" >数据分析与可视化</a>
+        <a href="/document" style="display: inline-block; text-align: center" >技术文档</a>
     </div>
 
     <h1 style="text-align: center;">疫情数据展示</h1>
 
-    <div id="current-maps">
+    <div id="current-maps" style="border: 5px;">
         <div>
             <label>请选择地图类型:     </label>
             <select name="select-map" id="mapselecter">
@@ -46,11 +46,17 @@
     </div>
 
     <div>
-        <label>拖动滑块即可切换日期:</label>
-        <input id='sliderWord' style="width: 400px;vertical-align: middle;" type='range' min='0' max='90' step='1'/>
+        <div id="c61d88ede2df46799724e4ef261fa76f" class="chart-container" style="width:900px; height:500px;"></div>
+        <script type="text/javascript" src="{{ url_for('static',filename='wordcloud.js') }}"></script>
     </div>
-    <div id="wordcloud" style="width:1000px; height:600px;"></div>
 
+    <div>
+        <div>
+            <label>拖动滑块即可切换日期:</label>
+            <input id='sliderWord' style="width: 400px;vertical-align: middle;" type='range' min='0' max='90' step='1'/>
+        </div>
+        <div id="wordcloud" style="width:1000px; height:600px;"></div>
+    </div>
 
     <script type="text/javascript" src="{{ url_for('static',filename='render.js') }}"></script>
 </body>
