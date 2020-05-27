@@ -117,13 +117,15 @@
 
 ### 疫情趋势预测分析
 
-
+- logistic回归算法
 
 ## part 2: 疫情舆情数据分析与可视化
 
 ### 新闻数据分析与可视化
 
 #### 中国社会组织公共服务平台疫情防控专区新闻词云可视化(全部文章)：
+
+
 
 <div>
     <div id="c61d88ede2df46799724e4ef261fa76f" class="chart-container" style="width:900px; height:500px;"></div>
@@ -142,7 +144,17 @@
     <div id="wordcloud" style="width:1000px; height:600px;"></div>
 </div>
 
+### TF-IDF
+
+<img src="{{ url_for('static',filename='results/tfidf.png') }}" style="width:1000px; height:600px;">
+
+# 层次聚类分析
+
+<img src="{{ url_for('static',filename='results/tree_word_50.png') }}" style="width:1000px;">
+
 ### 微博舆情分析与数据可视化
+
+
 
 
 <script type="text/javascript" src="{{ url_for('static',filename='render.js') }}"></script>
