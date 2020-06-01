@@ -5,6 +5,7 @@ var worldmap = echarts.init(document.getElementById('worldMap'), 'white', {rende
 var chinamap = echarts.init(document.getElementById('chinaMap'), 'white', {renderer: 'canvas'});
 var lineChart = echarts.init(document.getElementById('lines'), 'white', {renderer: 'canvas'});
 var wordchart = echarts.init(document.getElementById('wordcloud'), 'white', {renderer: 'canvas'});
+var weibochart = echarts.init(document.getElementById('weibocloud'), 'white', {renderer: 'canvas'});
 
 var slider = document.getElementById('slider');
 
@@ -58,6 +59,18 @@ document.getElementById('sliderWord').onchange = function changeWordCloud(){
     });
 }
 
+document.getElementById('sliderWeibo').onchange = function changeWeiboCloud(){
+    $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:5000/weiboCloud",
+        dataType: "json",
+        data:  "value="+document.getElementById('sliderWeibo').value,
+        success: function (result) {
+            weibochart.setOption(result);
+        }
+    });
+}
+
 $(
     function () {
         fetchworldMapData(worldmap);
@@ -69,6 +82,14 @@ $(
             dataType: "json",
             success: function (result) {
                 wordchart.setOption(result);
+            }
+        });
+        $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:5000/weiboCloud",
+            dataType: "json",
+            success: function (result) {
+                weibochart.setOption(result);
             }
         });
     }

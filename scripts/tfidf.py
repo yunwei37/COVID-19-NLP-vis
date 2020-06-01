@@ -33,7 +33,7 @@ keywords = jieba.analyse.extract_tags(cut_words,
 print(keywords)
 
 # 数据存储
-pd.DataFrame(keywords, columns=['词语','重要性']).to_excel('TF_IDF关键词前50.xlsx')
+# pd.DataFrame(keywords, columns=['词语','重要性']).to_excel('TF_IDF关键词前50.xlsx')
 
 # keyword本身包含两列数据
 ss = pd.DataFrame(keywords,columns = ['词语','重要性'])     

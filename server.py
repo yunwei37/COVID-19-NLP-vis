@@ -13,6 +13,7 @@ from scripts.mapchina import render_mapcountChina
 from scripts.mapworld import render_mapcountWorld
 from scripts.lineCountry import render_lines
 from scripts.jiebafenci import render_wordcloud
+from scripts.weiboAnalyse import weiboWordcloud
 
 # map time index
 i = 45
@@ -62,6 +63,15 @@ def get_word_chart():
             i = 0
         print(i)
         return render_wordcloud(i).dump_options_with_quotes()
+
+@app.route("/weiboCloud",methods=['POST', 'GET'])
+def get_weibo_chart():
+    if request.method == 'GET':
+        i = request.args.get('value', '')
+        if not i:
+            i = 0
+        print(i)
+        return weiboWordcloud(i).dump_options_with_quotes()
 
 @app.route('/changecountry',methods=['POST', 'GET'])
 def changeCountry():

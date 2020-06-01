@@ -87,10 +87,11 @@ def generateSentimentsline():
 def weiboWordcloud(dateId):
     from scripts.weiboWordData import date_data
     words = date_data[int(dateId)][1]
+    date = date_data[int(dateId)][0]
     c = (
         WordCloud()
         .add("", words, word_size_range=[20, 100], shape=SymbolType.ROUND_RECT)
-        .set_global_opts(title_opts=opts.TitleOpts(title='全国新型冠状病毒疫情词云图'))
+        .set_global_opts(title_opts=opts.TitleOpts(title='全国新型冠状病毒疫情词云图 '+str(date)))
     )
     return c
 
