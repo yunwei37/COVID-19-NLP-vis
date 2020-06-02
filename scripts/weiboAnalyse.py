@@ -1,8 +1,4 @@
 import psycopg2
-conn = psycopg2.connect(database="hw8", user="postgres", password="postgres", host="127.0.0.1", port="5432")
-print("Opened database successfully" )
-
-cur = conn.cursor()
 from pyecharts import options as opts
 from pyecharts.charts import WordCloud
 from pyecharts.globals import SymbolType
@@ -14,6 +10,10 @@ from pyecharts.commons.utils import JsCode
 
 
 def generateData():
+    conn = psycopg2.connect(database="hw8", user="postgres", password="postgres", host="127.0.0.1", port="5432")
+    print("Opened database successfully" )
+
+    cur = conn.cursor()
     results = []
     for d in range(1,32):
         m = 1
@@ -57,6 +57,10 @@ def generateData():
     return results
 
 def generateSentimentsline():
+    conn = psycopg2.connect(database="hw8", user="postgres", password="postgres", host="127.0.0.1", port="5432")
+    print("Opened database successfully" )
+
+    cur = conn.cursor()
     query="select month ||'-'|| day as time, avg(sentiments) from weibo group by day,month order by month,day;"
     cur.execute(query)
     rows = cur.fetchall()   
