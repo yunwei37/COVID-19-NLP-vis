@@ -1,15 +1,14 @@
-import psycopg2
 from pyecharts import options as opts
 from pyecharts.charts import WordCloud
 from pyecharts.globals import SymbolType
 from pyecharts.globals import CurrentConfig, NotebookType
 import pandas as pd
-import matplotlib as plt
 from pyecharts.charts import Line
 from pyecharts.commons.utils import JsCode
 
 
 def generateData():
+    import psycopg2
     conn = psycopg2.connect(database="hw8", user="postgres", password="postgres", host="127.0.0.1", port="5432")
     print("Opened database successfully" )
 
@@ -57,6 +56,7 @@ def generateData():
     return results
 
 def generateSentimentsline():
+    import psycopg2
     conn = psycopg2.connect(database="hw8", user="postgres", password="postgres", host="127.0.0.1", port="5432")
     print("Opened database successfully" )
 
