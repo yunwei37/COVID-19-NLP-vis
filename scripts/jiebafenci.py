@@ -59,7 +59,7 @@ def render_wordcloud(percent = 0) -> WordCloud:
     c = (
         WordCloud()
         .add("", words, word_size_range=[20, 100], shape=SymbolType.ROUND_RECT)
-        .set_global_opts(title_opts=opts.TitleOpts(title='全国新型冠状病毒疫情词云图'+' '+date_data[int(percent)][1]+' - '+date_data[int(percent)][2]))
+        .set_global_opts(title_opts=opts.TitleOpts(title='全国新型冠状病毒疫情新闻词云图'+' '+date_data[int(percent)][1]+' - '+date_data[int(percent)][2]))
     )
     return c
 

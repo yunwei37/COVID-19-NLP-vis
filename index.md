@@ -144,17 +144,40 @@
     <div id="wordcloud" style="width:1000px; height:600px;"></div>
 </div>
 
-### TF-IDF
+### TF-IDF值
+
+TF-IDF（Term Frequency-InversDocument Frequency）是一种常用于信息处理和数据挖掘的加权技术。该技术采用一种统计方法，根据字词的在文本中出现的次数和在整个语料中出现的文档频率来计算一个字词在整个语料中的重要程度。它的优点是能过滤掉一些常见的却无关紧要本的词语，同时保留影响整个文本的重要字词。
+
+TF - IDF = TF * IDF
+
+TF（Term Frequency）表示某个关键词在整篇文章中出现的频率。IDF（InversDocument Frequency）表示计算倒文本频率。文本频率是指某个关键词在整个语料所有文章中出现的次数。倒文档频率又称为逆文档频率，它是文档频率的倒数，主要用于降低所有文档中一些常见却对文档影响不大的词语的作用。
 
 <img src="{{ url_for('static',filename='results/tfidf.png') }}" style="width:1000px; height:600px;">
 
 # 层次聚类分析
 
+层次聚类法的基本过程如下：
+
+- 每一个样本点视为一个簇；
+- 计算各个簇之间的距离，最近的两个簇聚合成一个新簇；
+- 重复以上过程直至最后只有一簇。
+
+层次聚类不指定具体的簇数，而只关注簇之间的远近，最终会形成一个树形图，可以表明相应关键词间的联系：
+
 <img src="{{ url_for('static',filename='results/tree_word_50.png') }}" style="width:1000px;">
 
 ### 微博舆情分析与数据可视化
 
-
-
+微博主题词词云图
 
 <script type="text/javascript" src="{{ url_for('static',filename='render.js') }}"></script>
+
+微博每日主题词词云图
+
+<div>
+    <div>
+        <label>拖动滑块即可切换日期:</label>
+        <input id='sliderWeibo' style="width: 400px;vertical-align: middle;" type='range' min='0' max='49' step='1'/>
+    </div>
+    <div id="weibocloud" style="width:1000px; height:600px;"></div>
+</div>

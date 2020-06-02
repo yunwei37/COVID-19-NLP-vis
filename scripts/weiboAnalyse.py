@@ -91,7 +91,7 @@ def weiboWordcloud(dateId):
     c = (
         WordCloud()
         .add("", words, word_size_range=[20, 100], shape=SymbolType.ROUND_RECT)
-        .set_global_opts(title_opts=opts.TitleOpts(title='全国新型冠状病毒疫情词云图 '+str(date)))
+        .set_global_opts(title_opts=opts.TitleOpts(title='全国新型冠状病毒疫情微博每日主题词词云图 '+str(date)))
     )
     return c
 
