@@ -41,6 +41,13 @@ def index():
 def document():
     return render_template("README.html")
 
+@app.route("/nlp")
+def nlpNotebook():
+    return render_template("NLP.html")
+
+@app.route("/analyse")
+def anaNotebook():
+    return render_template("analyse.html")
 
 @app.route("/worldmap")
 def get_world_map():

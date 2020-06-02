@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>疫情数据展示</title>
+    <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/world.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts-wordcloud.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
+</head>
+<body>
+
+    <div id="links" style="line-height: 36px; background-color:black;">
+        <a href="/" style="display: inline-block; text-align: center;text-decoration: none;color: azure;padding-left: 10px;padding-right: 10px;" >数据分析与可视化</a>
+        <a href="/document" style="display: inline-block; text-align: center;text-decoration: none;color: azure;padding-left: 10px;padding-right: 10px;" >技术文档</a>
+    </div>
+    
+    <div style="margin-left: auto;margin-right: auto;max-width: 1050px;">
+
+    <h1 style="text-align: center;">疫情数据展示</h1>
+
+    <div>
+        <div id="current-maps" style="border: 20px;border-color: black;">
+            <div>
+                <label>请选择地图类型:     </label>
+                <select name="select-map" id="mapselecter">
+                    <option value="0" >现存确诊人数</option>
+                    <option value="1" >累计死亡人数</option>
+                    <option value="2" >死亡率（死亡/确诊）</option>
+                </select>
+            </div>
+            <div>
+                <label>拖动滑块即可切换日期:</label>
+                <input id='slider' style="width: 400px;vertical-align: middle;" type='range' min='0' max='121' step='1'/>
+            </div>
+            <div id="worldMap" class="maps" style="width:500px; height:500px;display: inline-block;"></div>
+            <div id="chinaMap" class="maps" style="width:500px; height:500px;display: inline-block;"></div>
+        </div>  
+        <div>
+            <label>请选择国家：    </label>
+            <select id="selectCountrys">
+            {% for cate in cates %}
+                <option value="{{cate}}" >{{cate}}</option>
+            {% endfor %}
+            </select>
+            <div id="lines" style="width:500px; height:300px;display: inline-block;"></div>
+            <div id="04cd225d9bb642288bef9788ed998f30" class="chart-container" style="width:500px; height:300px;display: inline-block;"></div>
+            <script type="text/javascript" src="{{ url_for('static',filename='calendar.js') }}"></script>
+        </div>
+    </div>
+
+    <div>
+        <div id="c61d88ede2df46799724e4ef261fa76f" class="chart-container" style="width:900px; height:500px;"></div>
+        <script type="text/javascript" src="{{ url_for('static',filename='wordcloud.js') }}"></script>
+    </div>
+
+    <div>
+        <div>
+            <label>拖动滑块即可切换日期:</label>
+            <input id='sliderWord' style="width: 400px;vertical-align: middle;" type='range' min='0' max='90' step='1'/>
+        </div>
+        <div id="wordcloud" style="width:1000px; height:600px;"></div>
+    </div>
+
+    <div>
+        <div>
+            <label>拖动滑块即可切换日期:</label>
+            <input id='sliderWeibo' style="width: 400px;vertical-align: middle;" type='range' min='0' max='49' step='1'/>
+        </div>
+        <div id="weibocloud" style="width:1000px; height:600px;"></div>
+    </div>
+
+    <div>
+        <div id="9d2779b5eb384c2793ed26055a81879d" class="chart-container" style="width:900px; height:500px;"></div>
+        <script type="text/javascript" src="{{ url_for('static',filename='weibolines.js') }}"></script>
+    </div>
+
+
+    <img src="{{ url_for('static',filename='results/tfidf.png') }}" style="width:1000px; height:600px;">
+    <img src="{{ url_for('static',filename='results/tree_word_50.png') }}" style="width:1000px;">
+
+    <div>
+        <div id="e8865e65e86c410f9666c9b174426b7d" class="chart-container" style="width:900px; height:500px;"></div>
+        <script type="text/javascript" src="{{ url_for('static',filename='weibolines.js') }}"></script>
+    </div>
+    
+</div>
+    <script type="text/javascript" src="{{ url_for('static',filename='render.js') }}"></script>
+</body>
+</html>

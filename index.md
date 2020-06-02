@@ -4,11 +4,10 @@
 <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts-wordcloud.min.js"></script>
 <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
 
-<div id="links" style="line-height: 36px; background-color: rgb(84, 105, 104);">
-    <a href="/" style="display: inline-block; text-align: center" >数据分析与可视化</a>
-    <a href="/document" style="display: inline-block; text-align: center" >技术文档</a>
+<div id="links" style="line-height: 36px; background-color:black;">
+    <a href="/" style="display: inline-block; text-align: center;text-decoration: none;color: azure;" >数据分析与可视化</a>
+    <a href="/document" style="display: inline-block; text-align: center;text-decoration: none;color: azure;" >技术文档</a>
 </div>
-
 
 # 疫情空间数据与舆情数据分析可视化
 
@@ -24,7 +23,7 @@
 - 中国社会组织公共服务平台疫情防控专区新闻1400+篇，包含时间、标题、正文内容、作者等
 - 依据与“新冠肺炎”相关的230个主题关键词进行数据采集的2020年1月1日—2020年2月20日期间共计100万条微博数据
 
-部分数据经爬虫采集，部分数据采用公开数据集；
+部分数据经爬虫采集，部分数据采用公开数据集；可视化部分采用pyecharts+flask实现动态交互
 
 ## Part 1：疫情空间数据数据可视化态势感知、趋势分析：
 
@@ -47,13 +46,13 @@
         <label>拖动滑块即可切换日期:</label>
         <input id='slider' style="width: 400px;vertical-align: middle;" type='range' min='0' max='121' step='1'/>
     </div>
-    <div id="worldMap" class="maps" style="width:500px; height:500px;display: inline-block;"></div>
-    <div id="chinaMap" class="maps" style="width:500px; height:500px;display: inline-block;"></div>
+    <div id="worldMap" class="maps" style="width:800px; height:600px;display: inline-block;"></div>
+    <div id="chinaMap" class="maps" style="width:800px; height:600px;display: inline-block;"></div>
 </div>
 
 通过交互分析可以发现：
 
-- 现存确诊人数
+- 现存确诊人数图
   - 在1.20日左右，全国公布的疫情一开始出现在广东、湖北、北京上海等地，此时湖北的疫情确诊人数已经突破200；
   - 此后，疫情从湖北开始向四周身份成扩散趋势，在1.26日湖北的确诊人数已经突破1000；除湖北外，浙江与广东确诊人数也到达三位数；国外在美国、澳大利亚、法国和泰国等东南亚国家也出现确诊病例；
   - 在2.2日前后，湖北的确诊人数突破五位数，其他地区疫情人数继续增加；国外疫情也在欧洲、东南亚、美洲呈缓慢扩散趋势
@@ -126,7 +125,7 @@
 
 ### 疫情趋势预测分析
 
-- logistic回归算法
+#### logistic回归算法
 
 （1）模型描述：当一个物种迁入到一个新生态系统中后，其数量会发生变化。假设该物种的起始数量小于环境的最大容纳量，则数量会增长。该物种在此生态系统中有天敌、食物、空间等资源也不足（非理想环境），则增长函数满足逻辑斯谛方程，图像呈S形，此方程是描述在资源有限的条件下种群增长规律的一个最佳数学模型。
 
@@ -140,9 +139,24 @@
 
 可以将本模型推广，进行全球范围内典型新冠肺炎爆发国家的疫情拟合与未来疫情预测，同时将通过R值的大小反应出该国疫情应对的有效程度：
 
-<img src="{{ url_for('static',filename='results/logistic_china.png') }}" style="width:600px; height:500px;">
+以下分别是对日本、美国、中国、德国从1.19至5.19的疫情数据进行的拟合和预测：
 
-- SEITR模型：
+<div>
+<img src="{{ url_for('static',filename='results/logistic_world.png') }}" style="width:400px; height:300px;display: inline-block;">
+<img src="{{ url_for('static',filename='results/logistic_american.png') }}" style="width:400px; height:300px;display: inline-block;">
+<img src="{{ url_for('static',filename='results/logistic_china1.png') }}" style="width:400px; height:300px;display: inline-block;">
+<img src="{{ url_for('static',filename='results/logistic_german.png') }}" style="width:400px; height:300px;display: inline-block;">
+</div>
+
+R值：
+
+国家 | 中国 |美国 |英国 |德国 |意大利 |韩国| 日本
+- | :-: | :-: | :-: | :-: | :-: | :-: | -:
+R |0.25 | 0.05 |0.08 |0.09 |0.08 |0.11 |0.08
+
+关于R值的补充说明：逻辑斯蒂模型中R值代表的增长速率不是传统意义上理解的种群增长速度，而是接近种群数量达到环境承载力K值的速度。强烈的人为干预可以**大幅度降低K值**，使得种群数量快速达到最大值附近，疫情扩散得以控制。所以本模型在预测各国最终累计感染人数的功能之外，拟合过程中R值的大小可以反映某个国家面对新冠肺炎采取措施的**有效性和效率**。一般来说，R值越大，该国防疫措施越有效。
+
+#### SEITR模型：
 
 （1）模型简介：SEITR模型是基于动力学SEIR模型不断调试模拟的结果，能够比较合理贴合传染病传播的一般规律。
 
@@ -224,6 +238,9 @@ TF（Term Frequency）表示某个关键词在整篇文章中出现的频率。I
 
 <img src="{{ url_for('static',filename='results/tfidf.png') }}" style="width:600px; height:500px;">
 
+输出结果如下图所示，可以看到“疫情”、“组织”、“捐赠”、“社会”、“协会”、“肺炎”、“物资”等都是高频词，也是大众普
+遍关心的主题。
+
 # 层次聚类分析
 
 对主题词进行层次聚类分析，层次聚类法的基本过程如下：
@@ -236,7 +253,10 @@ TF（Term Frequency）表示某个关键词在整篇文章中出现的频率。I
 
 <img src="{{ url_for('static',filename='results/tree_word_50.png') }}" style="width:1000px;">
 
-可以明显地观察到，主题词可以分为三类；
+可以明显地观察到，主题词可以分为三类，大致对应于三个主题板块：
+- 医院获取物资捐款、志愿者行动
+- 企业复工复产
+- 社会组织抗击疫情
 
 ### 微博舆情分析与数据可视化
 
@@ -246,7 +266,7 @@ TF（Term Frequency）表示某个关键词在整篇文章中出现的频率。I
 
 <script type="text/javascript" src="{{ url_for('static',filename='render.js') }}"></script>
 
-微博每日主题词词云图：
+分别对于每日的微博主题词进行分析，可绘制微博每日主题词词云图：
 
 <div>
     <div>
@@ -256,3 +276,26 @@ TF（Term Frequency）表示某个关键词在整篇文章中出现的频率。I
     <div id="weibocloud" style="width:1000px; height:600px;"></div>
 </div>
 
+通过可视化交互分析可以发现：
+
+- 在疫情尚未大面积出现的前期，收集到的疫情相关主题词主要为2020、发烧、肺炎、穿山甲等等，疫情有关词语占主题词比例相对较少，主题词相对较为分散；其中也夹杂部分早期出现的如病毒性等描述；
+- 在1月12号左右，冠状病毒、肺炎等词语数量开始远大于其他非疫情相关词语；
+- 在1.23，随着武汉封城，武汉这一词汇提及次数也显著增大；
+- 在1月底二月初，疫情、新冠等词语也频繁被提及；加油这一词语也十分显著，表明了全国人民同疫情斗争的决心和对武汉的美好祝愿；
+- 该词云图也可以显著的反应出舆论热点，如2.6左右的李文亮医生去世事件就可以观察到李文亮一词在词云图中显著展示；
+- 肖战一词占比较少，但始终在词云图中出现，也许表明了在疫情期间仍然对于明星有一定的关注流量；
+
+#### 微博情感分析
+
+对微博数据采用snowNLP进行情感分析得出的情感数值，范围为-0.5 ~ 0.5，大于0为正面情感，小于0为负面情感；
+
+绘制每日平均情感数值曲线图：
+
+<div>
+    <div id="9d2779b5eb384c2793ed26055a81879d" class="chart-container" style="width:900px; height:500px;"></div>
+    <script type="text/javascript" src="{{ url_for('static',filename='weibolines.js') }}"></script>
+</div>
+
+总体而言，疫情相关的微博情感倾向还是偏正面或中性；在1.19前，情感平均值较高，约为0.2；在1.19，疫情开始在全国扩散开来并且钟南山宣布人传人之后，情感平均值下降到了0，1附近；在2.18、2.19时，可能由于疫情国内接近拐点，情感分析数值又有显著提高；
+
+其他分析和代码详见notebook；
