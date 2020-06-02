@@ -9,6 +9,7 @@ scripts/__pycache__
 
 dataSets/nCoV_total_p1.csv
 dataSets/nCoV_total_p2.csv
+dataSets/中国社会组织_疫情防控-5_21.csv
 
 notebook/Include
 notebook/Lib
