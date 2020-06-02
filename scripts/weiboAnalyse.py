@@ -8,6 +8,7 @@ from pyecharts.charts import WordCloud
 from pyecharts.globals import SymbolType
 from pyecharts.globals import CurrentConfig, NotebookType
 import pandas as pd
+import matplotlib as plt
 from pyecharts.charts import Line
 from pyecharts.commons.utils import JsCode
 
@@ -95,8 +96,27 @@ def weiboWordcloud(dateId):
     )
     return c
 
+def weiboidf():
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    import numpy as np
+    from matplotlib.font_manager import FontProperties
+    keywords = list(pd.read_csv('notebook\\TF_IDF关键词前50.csv'))
+    ss = pd.DataFrame(keywords,columns = ['词语','重要性'])     
+
+    plt.figure(figsize=(10,6))
+    plt.title('TF-IDF Ranking')
+    fig = plt.axes()
+    plt.barh(range(len(ss.重要性[:25][::-1])),ss.重要性[:25][::-1])
+    fig.set_yticks(np.arange(len(ss.重要性[:25][::-1])))
+    font = FontProperties(fname=r'c:\windows\fonts\simsun.ttc')
+    fig.set_yticklabels(ss.词语[:25][::-1],fontproperties=font)
+    fig.set_xlabel('Importance')
+    plt.show()
+
 if __name__ == "__main__":
-    generateSentimentsline()
+    weiboidf()
+    #generateSentimentsline()
 
 """    results = generateData()
     with open("weiboWordData.py",'w',encoding='utf-8') as f:

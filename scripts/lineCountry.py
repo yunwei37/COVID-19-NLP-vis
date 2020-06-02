@@ -6,7 +6,7 @@ import pyecharts.options as opts
 from pyecharts.charts import Line
 from pyecharts.commons.utils import JsCode
 
-country_name = '美国'
+country_name = '中国'
 
 
 def render_lines(country_name):
@@ -62,5 +62,47 @@ def render_lines(country_name):
 
     return line
 
+import datetime
+import random
+from pyecharts import options as opts
+from pyecharts.charts import Calendar
+
+def calendar_base() -> Calendar:
+    begin = datetime.date(2020, 1, 19) #设置起始日期
+    end = datetime.date(2020, 5, 19) #设置终止日期
+    n = "dataSets\\countrydata.csv"
+    data = pd.read_csv(n)
+    data = data[data['countryName'] == country_name]
+    date_list = list(data['dateId'])
+    date_list = list(map(lambda x:str(x),date_list))
+    confirm_list = list(data['confirmedIncr'])
+    data =[
+    [str(begin + datetime.timedelta(days=i)), confirm_list[i]] #设置日期间隔，步数范围
+    for i in range((end - begin).days - 3)
+     ]
+    print(len(data))
+
+    c = (
+    Calendar()
+    .add('', data, calendar_opts=opts.CalendarOpts(range_=['2020-1','2020-6'])) #添加到日历图，指定显示2019年数据
+    .set_global_opts(          #设置底部显示条，解释数据
+        title_opts=opts.TitleOpts(title='全国疫情每日新增确诊病例日历图',subtitle='From Weix'),
+        visualmap_opts=opts.VisualMapOpts(
+            pieces=[
+                                                {'min': 13000, 'color': '#7f1818'},  #不指定 max
+                                                {'min': 1000, 'max': 10000},
+                                                {'min': 500, 'max': 999},
+                                                {'min': 100, 'max': 499},
+                                                {'min': 10, 'max': 99},
+                                                {'min': 0, 'max': 9} ],   
+            orient='vertical',  #设置垂直显示
+            pos_top='230px',    
+            pos_left='100px',
+            is_piecewise=True    #是否连续
+         )
+     )
+    )
+    return  c
+
 if __name__ == "__main__":
-    render_lines(country_name).render('2019-nCoV'+country_name+'疫情数据曲线图.html')
+    calendar_base().render('全国疫情每日新增确诊病例日历图.html')
