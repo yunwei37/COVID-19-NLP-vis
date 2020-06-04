@@ -10,22 +10,14 @@ var weibochart = echarts.init(document.getElementById('weibocloud'), 'white', {r
 var slider = document.getElementById('slider');
 
 document.getElementById('slider').onchange =  function changeDate(){
-    $.ajax({
-        type: "GET",
-        url: "http://127.0.0.1:5000/changedate",
-        dataType: "json",
-        data:  "value="+document.getElementById('slider').value,
-        success: function (result) {
-            worldmap.setOption(result);
-            fetchchinaMapData(chinamap);
-        }
-    });
+    fetchworldMapData(worldmap);
+    fetchchinaMapData(chinamap);
 }
 
 document.getElementById('selectCountrys').onchange = function changeCountry(){
     $.ajax({
         type: "GET",
-        url: "http://127.0.0.1:5000/changecountry",
+        url: "/changecountry",
         dataType: "json",
         data:  "value="+document.getElementById('selectCountrys').value,
         success: function (result) {
@@ -35,22 +27,14 @@ document.getElementById('selectCountrys').onchange = function changeCountry(){
 }
 
 document.getElementById('mapselecter').onchange = function changeCountry(){
-    $.ajax({
-        type: "GET",
-        url: "http://127.0.0.1:5000/changemap",
-        dataType: "json",
-        data:  "value="+document.getElementById('mapselecter').value,
-        success: function (result) {
-            worldmap.setOption(result);
-            fetchchinaMapData(chinamap);
-        }
-    });
+    fetchworldMapData(worldmap);
+    fetchchinaMapData(chinamap);
 }
 
 document.getElementById('sliderWord').onchange = function changeWordCloud(){
     $.ajax({
         type: "GET",
-        url: "http://127.0.0.1:5000/wordcloud",
+        url: "/wordcloud",
         dataType: "json",
         data:  "value="+document.getElementById('sliderWord').value,
         success: function (result) {
@@ -62,7 +46,7 @@ document.getElementById('sliderWord').onchange = function changeWordCloud(){
 document.getElementById('sliderWeibo').onchange = function changeWeiboCloud(){
     $.ajax({
         type: "GET",
-        url: "http://127.0.0.1:5000/weiboCloud",
+        url: "/weiboCloud",
         dataType: "json",
         data:  "value="+document.getElementById('sliderWeibo').value,
         success: function (result) {
@@ -78,7 +62,7 @@ $(
         fetchlineData(lineChart)
         $.ajax({
             type: "GET",
-            url: "http://127.0.0.1:5000/wordcloud",
+            url: "/wordcloud",
             dataType: "json",
             success: function (result) {
                 wordchart.setOption(result);
@@ -86,7 +70,7 @@ $(
         });
         $.ajax({
             type: "GET",
-            url: "http://127.0.0.1:5000/weiboCloud",
+            url: "/weiboCloud",
             dataType: "json",
             success: function (result) {
                 weibochart.setOption(result);
@@ -98,8 +82,9 @@ $(
 function fetchchinaMapData(chart) {
     $.ajax({
         type: "GET",
-        url: "http://127.0.0.1:5000/chinamap",
+        url: "/chinamap",
         dataType: "json",
+        data:  "type="+document.getElementById('mapselecter').value+'&'+"index="+document.getElementById('slider').value,
         success: function (result) {
             chart.setOption(result);
         }
@@ -109,7 +94,7 @@ function fetchchinaMapData(chart) {
 function fetchlineData(chart) {
     $.ajax({
         type: "GET",
-        url: "http://127.0.0.1:5000/lines",
+        url: "/lines",
         dataType: "json",
         success: function (result) {
             chart.setOption(result);
@@ -120,8 +105,9 @@ function fetchlineData(chart) {
 function fetchworldMapData(chart) {
     $.ajax({
         type: "GET",
-        url: "http://127.0.0.1:5000/worldmap",
+        url: "/worldmap",
         dataType: "json",
+        data:  "type="+document.getElementById('mapselecter').value+'&'+"index="+document.getElementById('slider').value,
         success: function (result) {
             chart.setOption(result);
         }

@@ -1,12 +1,15 @@
-import time, json, requests
+import time, json
 import pandas as pd
 from pyecharts.charts import Map
 import pyecharts.options as opts
 import math
 
 dateId = 20200401
+
+n = "dataSets\countrydata.csv"
+
 def render_mapcountWorld_rate(dateId):
-    world_data = pd.read_csv("dataSets\countrydata.csv")
+    world_data = pd.read_csv(n)
     world_data = world_data[world_data['dateId'] == dateId]
 
     #print(world_data)
@@ -39,7 +42,7 @@ def render_mapcountWorld_rate(dateId):
     return world_map
 
 def render_mapcountWorld_death(dateId):
-    world_data = pd.read_csv("dataSets\countrydata.csv")
+    world_data = pd.read_csv(n)
     world_data = world_data[world_data['dateId'] == dateId]
     world_data = world_data[['countryFullName', 'deadCount']]
 
@@ -73,7 +76,7 @@ def render_mapcountWorld_death(dateId):
 
 # 中英国名转换函数
 def render_mapcountWorld_current(dateId):
-    world_data = pd.read_csv("dataSets\countrydata.csv")
+    world_data = pd.read_csv(n)
     world_data = world_data[world_data['dateId'] == dateId]
     # 从foreigns中选取 country和confirm 两列
     world_data = world_data[['countryFullName', 'currentConfirmedCount']]

@@ -15,12 +15,6 @@ from scripts.lineCountry import render_lines
 from scripts.jiebafenci import render_wordcloud
 from scripts.weiboAnalyse import weiboWordcloud
 
-# map time index
-i = 45
-
-# map type 
-maptype = 0
-
 n = "dataSets\\countrydata.csv"
 data = pd.read_csv(n)
 date_list = list(data[data['countryName'] == '中国']['dateId'])
@@ -28,8 +22,6 @@ countrylist = list(data[data['dateId'] == 20200412]['countryName'])
 countrylist = ['中国']+countrylist
 #print(date_list)
 #print(countrylist)
-
-selectCountry = '中国'
 
 app = Flask(__name__, static_folder="templates")
 
@@ -49,18 +41,28 @@ def nlpNotebook():
 def anaNotebook():
     return render_template("analyse.html")
 
-@app.route("/worldmap")
+@app.route("/worldmap",methods=['POST', 'GET'])
 def get_world_map():
-    return render_mapcountWorld(date_list[int(i)],maptype).dump_options_with_quotes()
+    if request.method == 'GET':
+        maptype = int(request.args.get('type', ''))
+        i = int(request.args.get('index', ''))
+        print(maptype)
+        print(i)
+        return render_mapcountWorld(date_list[int(i)],maptype).dump_options_with_quotes()
 
 
-@app.route("/chinamap")
+@app.route("/chinamap",methods=['POST', 'GET'])
 def get_china_map():
-    return render_mapcountChina(date_list[int(i)],maptype).dump_options_with_quotes()
+    if request.method == 'GET':
+        maptype = int(request.args.get('type', ''))
+        i = int(request.args.get('index', ''))
+        print(maptype)
+        print(i)
+        return render_mapcountChina(date_list[int(i)],maptype).dump_options_with_quotes()
 
 @app.route("/lines")
 def get_line_chart():
-    return render_lines(selectCountry).dump_options_with_quotes()
+    return render_lines('中国').dump_options_with_quotes()
 
 @app.route("/wordcloud",methods=['POST', 'GET'])
 def get_word_chart():
@@ -83,27 +85,9 @@ def get_weibo_chart():
 @app.route('/changecountry',methods=['POST', 'GET'])
 def changeCountry():
     if request.method == 'GET':
-        global selectCountry
         selectCountry = request.args.get('value', '')
         print(selectCountry)
         return render_lines(selectCountry).dump_options_with_quotes()
-
-@app.route('/changemap',methods=['POST', 'GET'])
-def changeMapType():
-    if request.method == 'GET':
-        global maptype
-        maptype = int(request.args.get('value', ''))
-        print(maptype)
-        return render_mapcountWorld(date_list[int(i)],maptype).dump_options_with_quotes()
-
-@app.route('/changedate',methods=['POST', 'GET'])
-def changeDate():
-    if request.method == 'GET':
-        global i
-        i = request.args.get('value', '')
-        print(i)
-        print(date_list[int(i)])
-        return render_mapcountWorld(date_list[int(i)],maptype).dump_options_with_quotes()
-
+        
 if __name__ == "__main__":
     app.run()

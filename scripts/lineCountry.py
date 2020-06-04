@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # By: Eastmount CSDN xiuzhang
-import time, json, requests
+import time, json
 import pandas as pd
 import pyecharts.options as opts
 from pyecharts.charts import Line
@@ -63,7 +63,6 @@ def render_lines(country_name):
     return line
 
 import datetime
-import random
 from pyecharts import options as opts
 from pyecharts.charts import Calendar
 

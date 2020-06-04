@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
-import time, json, requests
+import time, json
 import pandas as pd
 from pyecharts.charts import Map
 import pyecharts.options as opts
 
+n = "dataSets\\china_provincedata.csv"
+
 def render_mapcountChina_rate(dateId):
-    n = "dataSets\\china_provincedata.csv"
     data = pd.read_csv(n)
     data = data[data['dateId'] == dateId]
     #print(data['currentConfirmedCount'])
@@ -42,7 +43,6 @@ def render_mapcountChina_rate(dateId):
     return c
 
 def render_mapcountChina_death(dateId):
-    n = "dataSets\\china_provincedata.csv"
     data = pd.read_csv(n)
     data = data[data['dateId'] == dateId]
     #print(data['currentConfirmedCount'])
@@ -77,7 +77,6 @@ def render_mapcountChina_death(dateId):
 
 
 def render_mapcountChina_current(dateId):
-    n = "dataSets\\china_provincedata.csv"
     data = pd.read_csv(n)
     data = data[data['dateId'] == dateId]
     #print(data['currentConfirmedCount'])

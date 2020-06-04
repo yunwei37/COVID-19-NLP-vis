@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 <title>疫情数据可视化分析</title>
@@ -565,11 +565,15 @@ auto;max-width: 900px;background-color:ivory;padding-left: 15px;padding-right: 1
 <p>关于R值的补充说明：逻辑斯蒂模型中R值代表的增长速率不是传统意义上理解的种群增长速度，而是接近种群数量达到环境承载力K值的速度。强烈的人为干预可以<strong>大幅度降低K值</strong>，使得种群数量快速达到最大值附近，疫情扩散得以控制。所以本模型在预测各国最终累计感染人数的功能之外，拟合过程中R值的大小可以反映某个国家面对新冠肺炎采取措施的<strong>有效性和效率</strong>。一般来说，R值越大，该国防疫措施越有效。</p>
 <h4 id="seitr%E6%A8%A1%E5%9E%8B">SEITR模型：</h4>
 <p>（1）模型简介：SEITR模型是基于动力学SEIR模型不断调试模拟的结果，能够比较合理贴合传染病传播的一般规律。</p>
+
+<p>我们先来看看SEIR模型：</p>
+<img src="{{ url_for('static',filename='results/seirgraphy.png') }}">
 <p>1）模型中的4类人群：N为总人数
 SUSCEPTIBLES: 用S表示，为易感者, 潜在的可感染人群
 EXPOSED：用E表示，为潜伏者, 已经被感染但是没有表现出来的人群
 INFECTIVES: 用I表示，为感染者, 表现出感染症状的人
 RESISTANCES: 用R表示，为抵抗者, 感染者痊愈后获得抗性的人</p>
+<img src="{{ url_for('static',filename='results/equation.svg') }}">
 <p>2）模型中的3种参数：
 αß：易感人群（S) 被感染人员（I) 传染的传染率，相当于单人次易感者接触感染者而被感染的几率（ß）与易感者单位时间内接触的感染者人数（α）的乘积
 γ：感染人群（I) 以固定平均速率恢复（R) 或死亡的恢复率
@@ -627,7 +631,7 @@ RESISTANCES: 用R表示，为抵抗者, 感染者痊愈后获得抗性的人</p>
 <li>重复以上过程直至最后只有一簇。</li>
 </ul>
 <p>层次聚类不指定具体的簇数，而只关注簇之间的远近，最终会形成一个树形图，可以表明相应关键词间的联系：</p>
-<img src="{{ url_for('static',filename='results/tree_word_50.png') }}" style="width:1000px;">
+<img src="{{ url_for('static',filename='results/Tree_word_50.png') }}" style="width:1000px;">
 <p>可以明显地观察到，主题词可以分为三类，大致对应于三个主题板块：</p>
 <ul>
 <li>医院获取物资捐款、志愿者行动</li>

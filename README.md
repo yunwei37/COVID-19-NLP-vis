@@ -1,6 +1,19 @@
 # 疫情预测与舆情分析
 
-地理空间数据库课程作业：空间分析
+该项目是浙江大学地理空间数据库课程作业8：空间分析中，使用 flask + pyechart 搭建的简单新冠肺炎疫情数据可视化交互分析平台，包含疫情数据获取、态势感知、预测分析、舆情监测等任务
+
+
+项目分析报告已部署到网页端，可点击[http://flask.yunwei123.tech/](http://flask.yunwei123.tech/)进行查看
+
+交互可视化分析报告截图：
+
+<div style='text-align:center'>
+<img src='dataSets/img/map.png' style='width:500px;display: inline-block;'>
+<img src='dataSets/img/ana.png' style='width:500px;display: inline-block;'>
+<img src='dataSets/img/line.png' style='width:500px;display: inline-block;'>
+<img src='dataSets/img/weibos.png' style='width:500px;display: inline-block;'>
+<img src='dataSets/img/wordcloud.png' style='width:500px;display: inline-block;'>
+</div>
 
 ## 空间数据分析 作业要求
 
@@ -64,7 +77,7 @@
 
 ## 运行：
 
-运行 server.py
-打开  http://127.0.0.1:5000/
+1. 运行 server.py
+2. 打开  http://127.0.0.1:5000/
 
 
