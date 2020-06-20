@@ -68,7 +68,7 @@ from pyecharts.charts import Calendar
 
 def calendar_base() -> Calendar:
     begin = datetime.date(2020, 1, 19) #设置起始日期
-    end = datetime.date(2020, 5, 19) #设置终止日期
+    end = datetime.date(2020, 6, 17) #设置终止日期
     n = "dataSets\\countrydata.csv"
     data = pd.read_csv(n)
     data = data[data['countryName'] == country_name]
