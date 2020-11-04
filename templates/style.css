@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>技术文档</title>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-
-<style>
 /* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-body {
+ body {
 	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
 	font-size: var(--vscode-markdown-font-size, 14px);
 	padding: 0 26px;
@@ -102,6 +95,7 @@ body.showEditorSelection li.code-line:hover:before {
 img {
 	max-width: 100%;
 	max-height: 100%;
+	text-align: center;
 }
 
 a {
@@ -132,15 +126,33 @@ hr {
 	border-bottom: 2px solid;
 }
 
-h1 {
-	padding-bottom: 0.3em;
+h2, h3, h4 {
+	font-weight: normal;
+	text-align: center;
 	line-height: 1.2;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
+	padding-bottom: 10px;
+	border-bottom-style: dashed;
 }
 
-h1, h2, h3 {
+h2 {
+	border-bottom-width: 2px;
+}
+
+h3 {
+	border-bottom-width: 1px;
+}
+
+h4 {
+	border-bottom-width: 0px;
+}
+
+h1 {
 	font-weight: normal;
+	text-align: center;
+	line-height: 1.2;
+	padding-bottom: 0.3em;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
 }
 
 table {
@@ -357,113 +369,3 @@ code {
 .page {
 	page-break-after: always;
 }
-
-</style>
-
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-</head>
-<body>
-  <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-          ? 'dark'
-          : 'default'
-    });
-  </script>
-
-<div id="links" style="line-height: 36px; background-color:black;">
-    <a href="/" >数据分析与可视化</a>
-	<a href="/document" >技术文档</a>
-	<a href="/nlp" >舆论分析notebook</a>
-	<a href="/analyse" >趋势预测notebook</a>
-</div>
-
-<div style="margin-left: auto;margin-right: 
-auto;max-width: 900px;background-color:ivory;padding-left: 15px;padding-right: 15px;">
-
-<h1 id="%E7%96%AB%E6%83%85%E9%A2%84%E6%B5%8B%E4%B8%8E%E8%88%86%E6%83%85%E5%88%86%E6%9E%90">疫情预测与舆情分析</h1>
-<p>地理空间数据库课程作业：空间分析</p>
-<h2 id="%E7%A9%BA%E9%97%B4%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90-%E4%BD%9C%E4%B8%9A%E8%A6%81%E6%B1%82">空间数据分析 作业要求</h2>
-<h3 id="%E4%BD%9C%E4%B8%9A%E7%9B%AE%E7%9A%84">作业目的：</h3>
-<p>了解空间数据在日常生活中的应用，熟悉空间数据统计分析、空间数据挖掘、空间数据可视化等技术。</p>
-<h3 id="%E4%BD%9C%E4%B8%9A%E5%86%85%E5%AE%B9">作业内容：</h3>
-<p>新型冠状病毒肺炎（COVID-19，简称“新冠肺炎”）疫情肆虐全球多个国家，2020年3月11日，世界卫生组织 (WHO) 正式宣布将新冠肺炎列为全球性大流行病。在全球抗击新型冠状病毒疫情的过程中，产生了前所未有的大规模疫情数据，利用大数据分析技术和方法能够协助发现病毒传染源、监测疫情发展、调配救援物资，从而更好地进行疫情防控工作。空间数据分析作为大数据分析的重要组成，将数据智能处理、直观展示和交互分析有机地结合，使机器智能和人类智慧深度融合、优势互补，为疫情防控中的分析、指挥和决策提供有效依据和指南。</p>
-<p>作业要求以新冠疫情或其它重大公共卫生事件的相关时空数据为基础，利用数据清洗与管理、统计分析、数据挖掘、数据可视化等相关技术和方法，探索并发现疫情大数据背后隐藏的模式和规律。请选择一个具体的研究题目，进行深入分析。</p>
-<h3 id="%E9%80%89%E9%A2%98%E7%96%AB%E6%83%85%E9%A2%84%E6%B5%8B%E4%B8%8E%E8%88%86%E6%83%85%E7%9B%91%E6%B5%8B">选题：疫情预测与舆情监测：</h3>
-<p>本项目希望能利用交互式空间数据分析技术，感知和预测疫情发展趋势与关键节点、分析社交媒体话题与情感的动态演变、对社会舆情进行态势感知。</p>
-<h2 id="%E6%96%87%E6%A1%A3%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84">文档与目录结构</h2>
-<ul>
-<li>dataSets
-<ul>
-<li>
-<p>china_provincedata.csv 中国各省、直辖市、自治区、特别行政区的疫情数据</p>
-</li>
-<li>
-<p>countrydata.csv 全球214个国家地区以及钻石公主号邮轮的疫情数据</p>
-</li>
-<li>
-<p>nCoV_900k_train.unlabled.csv</p>
-<blockquote>
-<p>数据集依据与“新冠肺炎”相关的230个主题关键词进行数据采集，抓取了2020年1月1日—2020年2月20日期间共计100万条微博数据，并对其中10万条数据进行人工标注，标注分为三类，分别为：1（积极），0（中性）和-1（消极）。</p>
-</blockquote>
-</li>
-<li>
-<p>nCoV_100k_train.labled.csv 同上，有标注</p>
-<blockquote>
-<p>数据集太大了就先不上传了</p>
-</blockquote>
-</li>
-<li>
-<p>nCov_10k_test.csv 同上</p>
-</li>
-<li>
-<p>yqkx_data-5_21.csv 使用爬虫获取的人民网疫情快讯新闻100篇</p>
-</li>
-<li>
-<p>中国社会组织_疫情防控-5_21.csv 中国社会组织公共服务平台疫情防控专区新闻</p>
-</li>
-<li>
-<p>weiboComments-5_21.csv 5.21微博《战疫情》主题下的微博和评论数据</p>
-</li>
-</ul>
-</li>
-<li>notebook 分析时使用的notebook</li>
-<li>scripts python脚本（爬虫、可视化、数据处理等等）
-<ul>
-<li>spider-yqkx.py 人民网爬虫</li>
-<li>spider-社会组织.py 中国社会组织公共服务平台爬虫</li>
-<li>weibo_战疫情爬虫_spider.py  微博《战疫情》爬虫</li>
-<li>pyecharts-zhexian-country.py 使用pyecharts绘制任一国家疫情数据曲线图</li>
-<li>hierachy.py 层次聚类分析代码</li>
-<li>jiebafenci.py jieba分词代码及词云图渲染</li>
-<li>lineCountry.py 生成疫情曲线图</li>
-<li>logistic.py logistic分析代码</li>
-<li>mapchina.py 生成中国疫情地图</li>
-<li>mapworld.py 生成世界疫情地图</li>
-<li>mergeweibo.py weiboprocess.py 微博数据处理工具</li>
-<li>weiboAnalyse.py 微博数据分析代码</li>
-<li>wordData.py weiboWordData.py 词云图保存数据</li>
-<li>tfidf.py tfidf值可视化</li>
-<li>sentiments.py 情感分析</li>
-</ul>
-</li>
-<li>templates： 网站html/css/js及图片文件</li>
-</ul>
-<h2 id="%E4%BD%9C%E4%B8%9A%E9%83%A8%E5%88%86%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E6%A0%88">作业部分相关技术栈</h2>
-<ul>
-<li>数据库的构建与sql语句查询</li>
-<li>pyEchart可视化</li>
-<li>postgres sql数据分析</li>
-<li>snownlp 情感分析</li>
-<li>jieba</li>
-<li>flask</li>
-</ul>
-<h2 id="%E8%BF%90%E8%A1%8C">运行：</h2>
-<p>运行 server.py
-打开  http://127.0.0.1:5000/</p>
-
-</div>
-
-</body>
-</html>
