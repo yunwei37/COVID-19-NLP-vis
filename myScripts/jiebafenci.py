@@ -54,7 +54,7 @@ from pyecharts.globals import SymbolType
 
 # percent 0-90
 def render_wordcloud(percent = 0) -> WordCloud:
-    from scripts.wordData import date_data
+    from myScripts.wordData import date_data
     words = date_data[int(percent)][0]
     c = (
         WordCloud()

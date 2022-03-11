@@ -5,7 +5,7 @@ dataSets/nCoV_total.csv
 
 .ipynb_checkpoints
 
-scripts/__pycache__
+myScripts/__pycache__
 __pycache__
 
 dataSets/nCoV_total_p1.csv
@@ -16,5 +16,5 @@ notebook/Include
 notebook/Lib
 notebook/etc
 notebook/share
-notebook/Scripts
+notebook/myScripts
 notebook/词频前5000.csv

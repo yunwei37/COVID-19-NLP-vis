@@ -9,11 +9,11 @@ import pandas as pd
 from pyecharts import options as opts
 from pyecharts.charts import Line
 
-from scripts.mapchina import render_mapcountChina
-from scripts.mapworld import render_mapcountWorld
-from scripts.lineCountry import render_lines
-from scripts.jiebafenci import render_wordcloud
-from scripts.weiboAnalyse import weiboWordcloud
+from myScripts.mapchina import render_mapcountChina
+from myScripts.mapworld import render_mapcountWorld
+from myScripts.lineCountry import render_lines
+from myScripts.jiebafenci import render_wordcloud
+from myScripts.weiboAnalyse import weiboWordcloud
 
 n = "dataSets/countrydata.csv"
 data = pd.read_csv(n)

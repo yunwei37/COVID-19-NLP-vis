@@ -90,7 +90,7 @@ def generateSentimentsline():
 
 # dateId: 0-50
 def weiboWordcloud(dateId):
-    from scripts.weiboWordData import date_data
+    from myScripts.weiboWordData import date_data
     words = date_data[int(dateId)][1]
     date = date_data[int(dateId)][0]
     c = (

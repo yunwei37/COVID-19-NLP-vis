@@ -33,7 +33,7 @@
   - 中国社会组织_疫情防控-5_21.csv 中国社会组织公共服务平台疫情防控专区新闻
   - weiboComments-5_21.csv 5.21微博《战疫情》主题下的微博和评论数据
 - notebook 分析时使用的notebook
-- scripts python脚本（爬虫、可视化、数据处理等等）
+- myScripts python脚本（爬虫、可视化、数据处理等等）
   - spider-yqkx.py 人民网爬虫
   - spider-社会组织.py 中国社会组织公共服务平台爬虫
   - weibo_战疫情爬虫_spider.py  微博《战疫情》爬虫
@@ -72,7 +72,7 @@ Use docker:
 
 ```
 docker build -t covidvisimage .
-docker run -d --name covidvis -p 5000:5001 covidvisimage
+docker run -d --name covidvis -p 5000:5000 covidvisimage
 ```
 
 OR:
@@ -82,7 +82,7 @@ pip3 install -r requirements.txt
 python3 server.py
 ```
 
-2. 打开  http://127.0.0.1:5001/
+2. 打开  http://127.0.0.1:5000/
 
 注：此处使用的pyecharts版本为`1.7.1`，可能和后续 1.8 以上的版本存在部分不兼容，可以通过以下命令安装：
 
