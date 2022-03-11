@@ -6,7 +6,7 @@ import math
 
 dateId = 20200401
 
-n = "dataSets\countrydata.csv"
+n = "dataSets/countrydata.csv"
 
 def render_mapcountWorld_rate(dateId):
     world_data = pd.read_csv(n)

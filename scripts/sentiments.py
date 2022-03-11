@@ -53,22 +53,22 @@ if __name__ == "__main__":
     #processData('nCov_10k_test.csv','nCoV_test.csv')
 
     for i in range(10):
-        p.append(multiprocessing.Process(target=processData,args=('dataSets\\nCoV_total.csv','dataSets\\nCoV_test'+str(i)+'.csv',i*10,(i+1)*10)))
+        p.append(multiprocessing.Process(target=processData,args=('dataSets/nCoV_total.csv','dataSets/nCoV_test'+str(i)+'.csv',i*10,(i+1)*10)))
     for i in range(10):
         p[i].start()
     for i in range(10):
         p[i].join()
     
     print('merging')
-    df1 =  pd.read_csv('dataSets\\nCoV_test0.csv')
+    df1 =  pd.read_csv('dataSets/nCoV_test0.csv')
     for i in range(1,10):
-        df2 = pd.read_csv('dataSets\\nCoV_test'+str(i)+'.csv') 
+        df2 = pd.read_csv('dataSets/nCoV_test'+str(i)+'.csv') 
         df1 = pd.concat([df1,df2],axis=0,ignore_index=True)  #将df2数据与df1合并
     df1 = df1.reset_index(drop=True) #重新生成index
     print(df1.shape)
-    df1.to_csv('dataSets\\nCoV_total_p.csv') #将结果保存为新的csv文件
+    df1.to_csv('dataSets/nCoV_total_p.csv') #将结果保存为新的csv文件
     for i in range(10):
-        os.remove('dataSets\\nCoV_test'+str(i)+'.csv')
+        os.remove('dataSets/nCoV_test'+str(i)+'.csv')
     t1 = time.time()
     print(t1)
     print("second: "+str(t1-t))

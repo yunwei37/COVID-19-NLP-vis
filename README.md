@@ -67,7 +67,23 @@
 
 ## 运行：
 
-1. 运行 server.py
+1. 运行 server.py:
+
+Use docker:
+
+```
+docker build .
+
+```
+
+
+OR:
+
+```
+pip3 install -r requirement.txt
+python3 server.py
+```
+
 2. 打开  http://127.0.0.1:5000/
 
 注：此处使用的pyecharts版本为`1.7.1`，可能和后续 1.8 以上的版本存在部分不兼容，可以通过以下命令安装：

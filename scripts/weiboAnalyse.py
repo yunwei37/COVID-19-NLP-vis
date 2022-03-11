@@ -105,7 +105,7 @@ def weiboidf():
     import matplotlib.pyplot as plt
     import numpy as np
     from matplotlib.font_manager import FontProperties
-    keywords = list(pd.read_csv('notebook\\TF_IDF关键词前50.csv'))
+    keywords = list(pd.read_csv('notebook/TF_IDF关键词前50.csv'))
     ss = pd.DataFrame(keywords,columns = ['词语','重要性'])     
 
     plt.figure(figsize=(10,6))
@@ -113,8 +113,8 @@ def weiboidf():
     fig = plt.axes()
     plt.barh(range(len(ss.重要性[:25][::-1])),ss.重要性[:25][::-1])
     fig.set_yticks(np.arange(len(ss.重要性[:25][::-1])))
-    font = FontProperties(fname=r'c:\windows\fonts\simsun.ttc')
-    fig.set_yticklabels(ss.词语[:25][::-1],fontproperties=font)
+    #font = FontProperties(fname=r'c:\windows\fonts\simsun.ttc')
+    fig.set_yticklabels(ss.词语[:25][::-1])
     fig.set_xlabel('Importance')
     plt.show()
 

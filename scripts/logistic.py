@@ -40,7 +40,7 @@ t=np.array(t)
 P=[41,45,62,291,440,571,830,1287,1975,2744,4515]
 P=np.array(P)
 
-n = "dataSets\\countrydata.csv"
+n = "dataSets/countrydata.csv"
 data = pd.read_csv(n)
 data = data[data['countryName'] == '美国']
 date_list = list(data['dateId'])

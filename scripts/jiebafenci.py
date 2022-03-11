@@ -13,7 +13,7 @@ def generatewordData(percent):
     cut_words = ""
     all_words = ""
 
-    data = pd.read_csv('dataSets\\中国社会组织_疫情防控-5_21.csv')
+    data = pd.read_csv('dataSets/中国社会组织_疫情防控-5_21.csv')
 
     percent = percent / 10
     num = data.shape[0]/10

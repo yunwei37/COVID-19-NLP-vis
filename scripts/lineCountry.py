@@ -13,7 +13,7 @@ def render_lines(country_name):
     #-------------------------------------------------------------------------------------
     # 第一步：读取数据
     #-------------------------------------------------------------------------------------
-    n = "dataSets\\countrydata.csv"
+    n = "dataSets/countrydata.csv"
     data = pd.read_csv(n)
     data = data[data['countryName'] == country_name]
     date_list = list(data['dateId'])

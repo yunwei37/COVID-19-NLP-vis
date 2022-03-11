@@ -4,7 +4,7 @@ import pandas as pd
 from pyecharts.charts import Map
 import pyecharts.options as opts
 
-n = "dataSets\\china_provincedata.csv"
+n = "dataSets/china_provincedata.csv"
 
 def render_mapcountChina_rate(dateId):
     data = pd.read_csv(n)

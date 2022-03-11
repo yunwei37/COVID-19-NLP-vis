@@ -15,7 +15,7 @@ from scripts.lineCountry import render_lines
 from scripts.jiebafenci import render_wordcloud
 from scripts.weiboAnalyse import weiboWordcloud
 
-n = "dataSets\\countrydata.csv"
+n = "dataSets/countrydata.csv"
 data = pd.read_csv(n)
 date_list = list(data[data['countryName'] == '中国']['dateId'])
 countrylist = list(data[data['dateId'] == 20200412]['countryName'])

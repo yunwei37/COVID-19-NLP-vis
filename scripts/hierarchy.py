@@ -15,7 +15,7 @@ mpl.rcParams['font.sans-serif'] = ['SimHei']
 
 #------------------------------ 第一步 计算TOP100 ------------------------------
 # 计算中文分词词频TOP100
-datapd = pd.read_csv('dataSets\\中国社会组织_疫情防控-5_21.csv')
+datapd = pd.read_csv('dataSets/中国社会组织_疫情防控-5_21.csv')
 
 cut_words = ""
 all_words = ""
