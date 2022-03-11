@@ -7,3 +7,4 @@ snownlp
 lxml
 scipy
 pyecharts==1.7.1
+uwsgi
