@@ -6,6 +6,7 @@ dataSets/nCoV_total.csv
 .ipynb_checkpoints
 
 scripts/__pycache__
+__pycache__
 
 dataSets/nCoV_total_p1.csv
 dataSets/nCoV_total_p2.csv
